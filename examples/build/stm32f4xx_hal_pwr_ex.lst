@@ -1,0 +1,1125 @@
+ARM GAS  /tmp/cc7Jllzz.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f4xx_hal_pwr_ex.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.HAL_PWREx_EnableBkUpReg,"ax",%progbits
+  18              		.align	1
+  19              		.p2align 2,,3
+  20              		.global	HAL_PWREx_EnableBkUpReg
+  21              		.arch armv7e-m
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  25              		.fpu fpv4-sp-d16
+  27              	HAL_PWREx_EnableBkUpReg:
+  28              	.LFB130:
+  29              		.file 1 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c"
+   1:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /**
+   2:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   ******************************************************************************
+   3:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @file    stm32f4xx_hal_pwr_ex.c
+   4:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @author  MCD Application Team
+   5:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @brief   Extended PWR HAL module driver.
+   6:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *          This file provides firmware functions to manage the following 
+   7:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *          functionalities of PWR extension peripheral:           
+   8:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *           + Peripheral Extended features functions
+   9:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *         
+  10:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   ******************************************************************************
+  11:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @attention
+  12:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *
+  13:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
+  14:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * All rights reserved.</center></h2>
+  15:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *
+  16:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * This software component is licensed by ST under BSD 3-Clause license,
+  17:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * the "License"; You may not use this file except in compliance with the
+  18:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * License. You may obtain a copy of the License at:
+  19:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *                        opensource.org/licenses/BSD-3-Clause
+  20:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *
+  21:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   ******************************************************************************
+  22:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */ 
+  23:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+  24:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /* Includes ------------------------------------------------------------------*/
+  25:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** #include "stm32f4xx_hal.h"
+  26:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+  27:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /** @addtogroup STM32F4xx_HAL_Driver
+  28:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @{
+  29:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */
+ARM GAS  /tmp/cc7Jllzz.s 			page 2
+
+
+  30:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+  31:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /** @defgroup PWREx PWREx
+  32:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @brief PWR HAL module driver
+  33:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @{
+  34:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */
+  35:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+  36:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** #ifdef HAL_PWR_MODULE_ENABLED
+  37:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+  38:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /* Private typedef -----------------------------------------------------------*/
+  39:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /* Private define ------------------------------------------------------------*/
+  40:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /** @addtogroup PWREx_Private_Constants
+  41:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @{
+  42:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */    
+  43:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** #define PWR_OVERDRIVE_TIMEOUT_VALUE  1000U
+  44:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** #define PWR_UDERDRIVE_TIMEOUT_VALUE  1000U
+  45:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** #define PWR_BKPREG_TIMEOUT_VALUE     1000U
+  46:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** #define PWR_VOSRDY_TIMEOUT_VALUE     1000U
+  47:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /**
+  48:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @}
+  49:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */
+  50:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+  51:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****    
+  52:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /* Private macro -------------------------------------------------------------*/
+  53:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /* Private variables ---------------------------------------------------------*/
+  54:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /* Private function prototypes -----------------------------------------------*/
+  55:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /* Private functions ---------------------------------------------------------*/
+  56:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /** @defgroup PWREx_Exported_Functions PWREx Exported Functions
+  57:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *  @{
+  58:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */
+  59:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+  60:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /** @defgroup PWREx_Exported_Functions_Group1 Peripheral Extended features functions 
+  61:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *  @brief Peripheral Extended features functions 
+  62:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *
+  63:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** @verbatim   
+  64:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+  65:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****  ===============================================================================
+  66:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****                  ##### Peripheral extended features functions #####
+  67:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****  ===============================================================================
+  68:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+  69:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     *** Main and Backup Regulators configuration ***
+  70:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     ================================================
+  71:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     [..] 
+  72:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       (+) The backup domain includes 4 Kbytes of backup SRAM accessible only from 
+  73:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           the CPU, and address in 32-bit, 16-bit or 8-bit mode. Its content is 
+  74:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           retained even in Standby or VBAT mode when the low power backup regulator
+  75:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           is enabled. It can be considered as an internal EEPROM when VBAT is 
+  76:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           always present. You can use the HAL_PWREx_EnableBkUpReg() function to 
+  77:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           enable the low power backup regulator. 
+  78:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+  79:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       (+) When the backup domain is supplied by VDD (analog switch connected to VDD) 
+  80:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           the backup SRAM is powered from VDD which replaces the VBAT power supply to 
+  81:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           save battery life.
+  82:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+  83:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       (+) The backup SRAM is not mass erased by a tamper event. It is read 
+  84:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           protected to prevent confidential data, such as cryptographic private 
+  85:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           key, from being accessed. The backup SRAM can be erased only through 
+  86:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           the Flash interface when a protection level change from level 1 to 
+ARM GAS  /tmp/cc7Jllzz.s 			page 3
+
+
+  87:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           level 0 is requested. 
+  88:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       -@- Refer to the description of Read protection (RDP) in the Flash 
+  89:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           programming manual.
+  90:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+  91:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       (+) The main internal regulator can be configured to have a tradeoff between 
+  92:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           performance and power consumption when the device does not operate at 
+  93:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           the maximum frequency. This is done through __HAL_PWR_MAINREGULATORMODE_CONFIG() 
+  94:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           macro which configure VOS bit in PWR_CR register
+  95:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           
+  96:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****         Refer to the product datasheets for more details.
+  97:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+  98:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     *** FLASH Power Down configuration ****
+  99:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     =======================================
+ 100:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     [..] 
+ 101:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       (+) By setting the FPDS bit in the PWR_CR register by using the 
+ 102:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           HAL_PWREx_EnableFlashPowerDown() function, the Flash memory also enters power 
+ 103:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           down mode when the device enters Stop mode. When the Flash memory 
+ 104:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           is in power down mode, an additional startup delay is incurred when 
+ 105:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           waking up from Stop mode.
+ 106:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           
+ 107:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****            (+) For STM32F42xxx/43xxx/446xx/469xx/479xx Devices, the scale can be modified only when
+ 108:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****            is OFF and the HSI or HSE clock source is selected as system clock. 
+ 109:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****            The new value programmed is active only when the PLL is ON.
+ 110:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****            When the PLL is OFF, the voltage scale 3 is automatically selected. 
+ 111:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****         Refer to the datasheets for more details.
+ 112:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 113:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     *** Over-Drive and Under-Drive configuration ****
+ 114:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     =================================================
+ 115:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     [..]         
+ 116:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****        (+) For STM32F42xxx/43xxx/446xx/469xx/479xx Devices, in Run mode: the main regulator has
+ 117:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****            2 operating modes available:
+ 118:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****         (++) Normal mode: The CPU and core logic operate at maximum frequency at a given 
+ 119:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****              voltage scaling (scale 1, scale 2 or scale 3)
+ 120:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****         (++) Over-drive mode: This mode allows the CPU and the core logic to operate at a 
+ 121:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****             higher frequency than the normal mode for a given voltage scaling (scale 1,  
+ 122:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****             scale 2 or scale 3). This mode is enabled through HAL_PWREx_EnableOverDrive() function 
+ 123:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****             disabled by HAL_PWREx_DisableOverDrive() function, to enter or exit from Over-drive mod
+ 124:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****             the sequence described in Reference manual.
+ 125:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****              
+ 126:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****        (+) For STM32F42xxx/43xxx/446xx/469xx/479xx Devices, in Stop mode: the main regulator or low
+ 127:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****            supplies a low power voltage to the 1.2V domain, thus preserving the content of register
+ 128:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****            and internal SRAM. 2 operating modes are available:
+ 129:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****          (++) Normal mode: the 1.2V domain is preserved in nominal leakage mode. This mode is only 
+ 130:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****               available when the main regulator or the low power regulator is used in Scale 3 or 
+ 131:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****               low voltage mode.
+ 132:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****          (++) Under-drive mode: the 1.2V domain is preserved in reduced leakage mode. This mode is 
+ 133:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****               available when the main regulator or the low power regulator is in low voltage mode.
+ 134:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 135:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** @endverbatim
+ 136:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @{
+ 137:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */
+ 138:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 139:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /**
+ 140:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @brief Enables the Backup Regulator.
+ 141:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @retval HAL status
+ 142:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */
+ 143:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** HAL_StatusTypeDef HAL_PWREx_EnableBkUpReg(void)
+ARM GAS  /tmp/cc7Jllzz.s 			page 4
+
+
+ 144:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** {
+  30              		.loc 1 144 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+ 145:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   uint32_t tickstart = 0U;
+  34              		.loc 1 145 3 view .LVU1
+  35              	.LVL0:
+ 146:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 147:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *(__IO uint32_t *) CSR_BRE_BB = (uint32_t)ENABLE;
+  36              		.loc 1 147 3 view .LVU2
+ 144:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   uint32_t tickstart = 0U;
+  37              		.loc 1 144 1 is_stmt 0 view .LVU3
+  38 0000 38B5     		push	{r3, r4, r5, lr}
+  39              	.LCFI0:
+  40              		.cfi_def_cfa_offset 16
+  41              		.cfi_offset 3, -16
+  42              		.cfi_offset 4, -12
+  43              		.cfi_offset 5, -8
+  44              		.cfi_offset 14, -4
+  45              		.loc 1 147 33 view .LVU4
+  46 0002 0B4B     		ldr	r3, .L8
+ 148:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 149:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   /* Get tick */
+ 150:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   tickstart = HAL_GetTick();
+ 151:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 152:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   /* Wait till Backup regulator ready flag is set */  
+ 153:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   while(__HAL_PWR_GET_FLAG(PWR_FLAG_BRR) == RESET)
+  47              		.loc 1 153 9 view .LVU5
+  48 0004 0B4D     		ldr	r5, .L8+4
+ 147:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+  49              		.loc 1 147 33 view .LVU6
+  50 0006 0122     		movs	r2, #1
+  51 0008 C3F8A420 		str	r2, [r3, #164]
+ 150:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+  52              		.loc 1 150 3 is_stmt 1 view .LVU7
+ 150:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+  53              		.loc 1 150 15 is_stmt 0 view .LVU8
+  54 000c FFF7FEFF 		bl	HAL_GetTick
+  55              	.LVL1:
+  56 0010 0446     		mov	r4, r0
+  57              	.LVL2:
+  58              		.loc 1 153 3 is_stmt 1 view .LVU9
+  59              		.loc 1 153 8 is_stmt 0 view .LVU10
+  60 0012 05E0     		b	.L2
+  61              	.LVL3:
+  62              	.L4:
+ 154:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   {
+ 155:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     if((HAL_GetTick() - tickstart ) > PWR_BKPREG_TIMEOUT_VALUE)
+  63              		.loc 1 155 9 view .LVU11
+  64 0014 FFF7FEFF 		bl	HAL_GetTick
+  65              	.LVL4:
+  66              		.loc 1 155 23 view .LVU12
+  67 0018 001B     		subs	r0, r0, r4
+  68              		.loc 1 155 7 view .LVU13
+  69 001a B0F57A7F 		cmp	r0, #1000
+  70 001e 04D8     		bhi	.L5
+ARM GAS  /tmp/cc7Jllzz.s 			page 5
+
+
+  71              	.L2:
+  72              		.loc 1 155 5 is_stmt 1 view .LVU14
+ 153:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   {
+  73              		.loc 1 153 8 view .LVU15
+ 153:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   {
+  74              		.loc 1 153 9 is_stmt 0 view .LVU16
+  75 0020 6B68     		ldr	r3, [r5, #4]
+ 153:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   {
+  76              		.loc 1 153 8 view .LVU17
+  77 0022 1B07     		lsls	r3, r3, #28
+  78 0024 F6D5     		bpl	.L4
+ 156:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     {
+ 157:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       return HAL_TIMEOUT;
+ 158:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     } 
+ 159:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   }
+ 160:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   return HAL_OK;
+  79              		.loc 1 160 10 view .LVU18
+  80 0026 0020     		movs	r0, #0
+ 161:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** }
+  81              		.loc 1 161 1 view .LVU19
+  82 0028 38BD     		pop	{r3, r4, r5, pc}
+  83              	.LVL5:
+  84              	.L5:
+ 157:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     } 
+  85              		.loc 1 157 14 view .LVU20
+  86 002a 0320     		movs	r0, #3
+  87              		.loc 1 161 1 view .LVU21
+  88 002c 38BD     		pop	{r3, r4, r5, pc}
+  89              	.LVL6:
+  90              	.L9:
+  91              		.loc 1 161 1 view .LVU22
+  92 002e 00BF     		.align	2
+  93              	.L8:
+  94 0030 00000E42 		.word	1108213760
+  95 0034 00700040 		.word	1073770496
+  96              		.cfi_endproc
+  97              	.LFE130:
+  99              		.section	.text.HAL_PWREx_DisableBkUpReg,"ax",%progbits
+ 100              		.align	1
+ 101              		.p2align 2,,3
+ 102              		.global	HAL_PWREx_DisableBkUpReg
+ 103              		.syntax unified
+ 104              		.thumb
+ 105              		.thumb_func
+ 106              		.fpu fpv4-sp-d16
+ 108              	HAL_PWREx_DisableBkUpReg:
+ 109              	.LFB131:
+ 162:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 163:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /**
+ 164:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @brief Disables the Backup Regulator.
+ 165:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @retval HAL status
+ 166:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */
+ 167:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** HAL_StatusTypeDef HAL_PWREx_DisableBkUpReg(void)
+ 168:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** {
+ 110              		.loc 1 168 1 is_stmt 1 view -0
+ 111              		.cfi_startproc
+ 112              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/cc7Jllzz.s 			page 6
+
+
+ 113              		@ frame_needed = 0, uses_anonymous_args = 0
+ 169:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   uint32_t tickstart = 0U;
+ 114              		.loc 1 169 3 view .LVU24
+ 115              	.LVL7:
+ 170:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 171:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *(__IO uint32_t *) CSR_BRE_BB = (uint32_t)DISABLE;
+ 116              		.loc 1 171 3 view .LVU25
+ 168:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   uint32_t tickstart = 0U;
+ 117              		.loc 1 168 1 is_stmt 0 view .LVU26
+ 118 0000 38B5     		push	{r3, r4, r5, lr}
+ 119              	.LCFI1:
+ 120              		.cfi_def_cfa_offset 16
+ 121              		.cfi_offset 3, -16
+ 122              		.cfi_offset 4, -12
+ 123              		.cfi_offset 5, -8
+ 124              		.cfi_offset 14, -4
+ 125              		.loc 1 171 33 view .LVU27
+ 126 0002 0B4B     		ldr	r3, .L16
+ 172:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 173:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   /* Get tick */
+ 174:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   tickstart = HAL_GetTick();
+ 175:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 176:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   /* Wait till Backup regulator ready flag is set */  
+ 177:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   while(__HAL_PWR_GET_FLAG(PWR_FLAG_BRR) != RESET)
+ 127              		.loc 1 177 9 view .LVU28
+ 128 0004 0B4D     		ldr	r5, .L16+4
+ 171:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 129              		.loc 1 171 33 view .LVU29
+ 130 0006 0022     		movs	r2, #0
+ 131 0008 C3F8A420 		str	r2, [r3, #164]
+ 174:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 132              		.loc 1 174 3 is_stmt 1 view .LVU30
+ 174:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 133              		.loc 1 174 15 is_stmt 0 view .LVU31
+ 134 000c FFF7FEFF 		bl	HAL_GetTick
+ 135              	.LVL8:
+ 136 0010 0446     		mov	r4, r0
+ 137              	.LVL9:
+ 138              		.loc 1 177 3 is_stmt 1 view .LVU32
+ 139              		.loc 1 177 8 is_stmt 0 view .LVU33
+ 140 0012 05E0     		b	.L11
+ 141              	.LVL10:
+ 142              	.L13:
+ 178:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   {
+ 179:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     if((HAL_GetTick() - tickstart ) > PWR_BKPREG_TIMEOUT_VALUE)
+ 143              		.loc 1 179 9 view .LVU34
+ 144 0014 FFF7FEFF 		bl	HAL_GetTick
+ 145              	.LVL11:
+ 146              		.loc 1 179 23 view .LVU35
+ 147 0018 001B     		subs	r0, r0, r4
+ 148              		.loc 1 179 7 view .LVU36
+ 149 001a B0F57A7F 		cmp	r0, #1000
+ 150 001e 05D8     		bhi	.L14
+ 151              	.L11:
+ 152              		.loc 1 179 5 is_stmt 1 view .LVU37
+ 177:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   {
+ 153              		.loc 1 177 8 view .LVU38
+ARM GAS  /tmp/cc7Jllzz.s 			page 7
+
+
+ 177:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   {
+ 154              		.loc 1 177 9 is_stmt 0 view .LVU39
+ 155 0020 6B68     		ldr	r3, [r5, #4]
+ 177:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   {
+ 156              		.loc 1 177 8 view .LVU40
+ 157 0022 13F00803 		ands	r3, r3, #8
+ 158 0026 F5D1     		bne	.L13
+ 180:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     {
+ 181:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       return HAL_TIMEOUT;
+ 182:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     } 
+ 183:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   }
+ 184:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   return HAL_OK;
+ 159              		.loc 1 184 10 view .LVU41
+ 160 0028 1846     		mov	r0, r3
+ 185:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** }
+ 161              		.loc 1 185 1 view .LVU42
+ 162 002a 38BD     		pop	{r3, r4, r5, pc}
+ 163              	.LVL12:
+ 164              	.L14:
+ 181:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     } 
+ 165              		.loc 1 181 14 view .LVU43
+ 166 002c 0320     		movs	r0, #3
+ 167              		.loc 1 185 1 view .LVU44
+ 168 002e 38BD     		pop	{r3, r4, r5, pc}
+ 169              	.LVL13:
+ 170              	.L17:
+ 171              		.loc 1 185 1 view .LVU45
+ 172              		.align	2
+ 173              	.L16:
+ 174 0030 00000E42 		.word	1108213760
+ 175 0034 00700040 		.word	1073770496
+ 176              		.cfi_endproc
+ 177              	.LFE131:
+ 179              		.section	.text.HAL_PWREx_EnableFlashPowerDown,"ax",%progbits
+ 180              		.align	1
+ 181              		.p2align 2,,3
+ 182              		.global	HAL_PWREx_EnableFlashPowerDown
+ 183              		.syntax unified
+ 184              		.thumb
+ 185              		.thumb_func
+ 186              		.fpu fpv4-sp-d16
+ 188              	HAL_PWREx_EnableFlashPowerDown:
+ 189              	.LFB132:
+ 186:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 187:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /**
+ 188:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @brief Enables the Flash Power Down in Stop mode.
+ 189:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @retval None
+ 190:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */
+ 191:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** void HAL_PWREx_EnableFlashPowerDown(void)
+ 192:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** {
+ 190              		.loc 1 192 1 is_stmt 1 view -0
+ 191              		.cfi_startproc
+ 192              		@ args = 0, pretend = 0, frame = 0
+ 193              		@ frame_needed = 0, uses_anonymous_args = 0
+ 194              		@ link register save eliminated.
+ 193:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *(__IO uint32_t *) CR_FPDS_BB = (uint32_t)ENABLE;
+ 195              		.loc 1 193 3 view .LVU47
+ARM GAS  /tmp/cc7Jllzz.s 			page 8
+
+
+ 196              		.loc 1 193 33 is_stmt 0 view .LVU48
+ 197 0000 014B     		ldr	r3, .L19
+ 198 0002 0122     		movs	r2, #1
+ 199 0004 5A62     		str	r2, [r3, #36]
+ 194:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** }
+ 200              		.loc 1 194 1 view .LVU49
+ 201 0006 7047     		bx	lr
+ 202              	.L20:
+ 203              		.align	2
+ 204              	.L19:
+ 205 0008 00000E42 		.word	1108213760
+ 206              		.cfi_endproc
+ 207              	.LFE132:
+ 209              		.section	.text.HAL_PWREx_DisableFlashPowerDown,"ax",%progbits
+ 210              		.align	1
+ 211              		.p2align 2,,3
+ 212              		.global	HAL_PWREx_DisableFlashPowerDown
+ 213              		.syntax unified
+ 214              		.thumb
+ 215              		.thumb_func
+ 216              		.fpu fpv4-sp-d16
+ 218              	HAL_PWREx_DisableFlashPowerDown:
+ 219              	.LFB133:
+ 195:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /**
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @brief Disables the Flash Power Down in Stop mode.
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @retval None
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** void HAL_PWREx_DisableFlashPowerDown(void)
+ 201:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** {
+ 220              		.loc 1 201 1 is_stmt 1 view -0
+ 221              		.cfi_startproc
+ 222              		@ args = 0, pretend = 0, frame = 0
+ 223              		@ frame_needed = 0, uses_anonymous_args = 0
+ 224              		@ link register save eliminated.
+ 202:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *(__IO uint32_t *) CR_FPDS_BB = (uint32_t)DISABLE;
+ 225              		.loc 1 202 3 view .LVU51
+ 226              		.loc 1 202 33 is_stmt 0 view .LVU52
+ 227 0000 014B     		ldr	r3, .L22
+ 228 0002 0022     		movs	r2, #0
+ 229 0004 5A62     		str	r2, [r3, #36]
+ 203:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** }
+ 230              		.loc 1 203 1 view .LVU53
+ 231 0006 7047     		bx	lr
+ 232              	.L23:
+ 233              		.align	2
+ 234              	.L22:
+ 235 0008 00000E42 		.word	1108213760
+ 236              		.cfi_endproc
+ 237              	.LFE133:
+ 239              		.section	.text.HAL_PWREx_GetVoltageRange,"ax",%progbits
+ 240              		.align	1
+ 241              		.p2align 2,,3
+ 242              		.global	HAL_PWREx_GetVoltageRange
+ 243              		.syntax unified
+ 244              		.thumb
+ 245              		.thumb_func
+ARM GAS  /tmp/cc7Jllzz.s 			page 9
+
+
+ 246              		.fpu fpv4-sp-d16
+ 248              	HAL_PWREx_GetVoltageRange:
+ 249              	.LFB134:
+ 204:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 205:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /**
+ 206:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @brief Return Voltage Scaling Range.
+ 207:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @retval The configured scale for the regulator voltage(VOS bit field).
+ 208:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *         The returned value can be one of the following:
+ 209:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *            - @arg PWR_REGULATOR_VOLTAGE_SCALE1: Regulator voltage output Scale 1 mode
+ 210:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *            - @arg PWR_REGULATOR_VOLTAGE_SCALE2: Regulator voltage output Scale 2 mode
+ 211:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *            - @arg PWR_REGULATOR_VOLTAGE_SCALE3: Regulator voltage output Scale 3 mode
+ 212:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */  
+ 213:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** uint32_t HAL_PWREx_GetVoltageRange(void)
+ 214:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** {
+ 250              		.loc 1 214 1 is_stmt 1 view -0
+ 251              		.cfi_startproc
+ 252              		@ args = 0, pretend = 0, frame = 0
+ 253              		@ frame_needed = 0, uses_anonymous_args = 0
+ 254              		@ link register save eliminated.
+ 215:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   return (PWR->CR & PWR_CR_VOS);
+ 255              		.loc 1 215 3 view .LVU55
+ 256              		.loc 1 215 14 is_stmt 0 view .LVU56
+ 257 0000 024B     		ldr	r3, .L25
+ 258 0002 1868     		ldr	r0, [r3]
+ 216:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** }
+ 259              		.loc 1 216 1 view .LVU57
+ 260 0004 00F44040 		and	r0, r0, #49152
+ 261 0008 7047     		bx	lr
+ 262              	.L26:
+ 263 000a 00BF     		.align	2
+ 264              	.L25:
+ 265 000c 00700040 		.word	1073770496
+ 266              		.cfi_endproc
+ 267              	.LFE134:
+ 269              		.section	.text.HAL_PWREx_ControlVoltageScaling,"ax",%progbits
+ 270              		.align	1
+ 271              		.p2align 2,,3
+ 272              		.global	HAL_PWREx_ControlVoltageScaling
+ 273              		.syntax unified
+ 274              		.thumb
+ 275              		.thumb_func
+ 276              		.fpu fpv4-sp-d16
+ 278              	HAL_PWREx_ControlVoltageScaling:
+ 279              	.LVL14:
+ 280              	.LFB135:
+ 217:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 218:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** #if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx)
+ 219:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /**
+ 220:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @brief Configures the main internal regulator output voltage.
+ 221:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @param  VoltageScaling specifies the regulator output voltage to achieve
+ 222:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *         a tradeoff between performance and power consumption.
+ 223:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *          This parameter can be one of the following values:
+ 224:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *            @arg PWR_REGULATOR_VOLTAGE_SCALE1: Regulator voltage output range 1 mode,
+ 225:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *                                               the maximum value of fHCLK = 168 MHz.
+ 226:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *            @arg PWR_REGULATOR_VOLTAGE_SCALE2: Regulator voltage output range 2 mode,
+ 227:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *                                               the maximum value of fHCLK = 144 MHz.
+ 228:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @note  When moving from Range 1 to Range 2, the system frequency must be decreased to
+ARM GAS  /tmp/cc7Jllzz.s 			page 10
+
+
+ 229:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *        a value below 144 MHz before calling HAL_PWREx_ConfigVoltageScaling() API.
+ 230:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *        When moving from Range 2 to Range 1, the system frequency can be increased to
+ 231:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *        a value up to 168 MHz after calling HAL_PWREx_ConfigVoltageScaling() API.
+ 232:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @retval HAL Status
+ 233:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */
+ 234:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** HAL_StatusTypeDef HAL_PWREx_ControlVoltageScaling(uint32_t VoltageScaling)
+ 235:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** {
+ 236:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   uint32_t tickstart = 0U;
+ 237:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   
+ 238:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   assert_param(IS_PWR_VOLTAGE_SCALING_RANGE(VoltageScaling));
+ 239:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   
+ 240:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   /* Enable PWR RCC Clock Peripheral */
+ 241:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   __HAL_RCC_PWR_CLK_ENABLE();
+ 242:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   
+ 243:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   /* Set Range */
+ 244:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   __HAL_PWR_VOLTAGESCALING_CONFIG(VoltageScaling);
+ 245:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   
+ 246:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   /* Get Start Tick*/
+ 247:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   tickstart = HAL_GetTick();
+ 248:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   while((__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY) == RESET))
+ 249:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   {
+ 250:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     if((HAL_GetTick() - tickstart ) > PWR_VOSRDY_TIMEOUT_VALUE)
+ 251:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     {
+ 252:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       return HAL_TIMEOUT;
+ 253:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     } 
+ 254:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   }
+ 255:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 256:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   return HAL_OK;
+ 257:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** }
+ 258:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 259:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** #elif defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) 
+ 260:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F410Tx) || defined(STM32F410Cx) 
+ 261:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       defined(STM32F410Rx) || defined(STM32F411xE) || defined(STM32F446xx) || defined(STM32F469xx) 
+ 262:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       defined(STM32F479xx) || defined(STM32F412Zx) || defined(STM32F412Vx) || defined(STM32F412Rx) 
+ 263:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       defined(STM32F412Cx) || defined(STM32F413xx) || defined(STM32F423xx)
+ 264:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /**
+ 265:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @brief Configures the main internal regulator output voltage.
+ 266:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @param  VoltageScaling specifies the regulator output voltage to achieve
+ 267:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *         a tradeoff between performance and power consumption.
+ 268:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *          This parameter can be one of the following values:
+ 269:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *            @arg PWR_REGULATOR_VOLTAGE_SCALE1: Regulator voltage output range 1 mode,
+ 270:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *                                               the maximum value of fHCLK is 168 MHz. It can be 
+ 271:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *                                               180 MHz by activating the over-drive mode.
+ 272:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *            @arg PWR_REGULATOR_VOLTAGE_SCALE2: Regulator voltage output range 2 mode,
+ 273:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *                                               the maximum value of fHCLK is 144 MHz. It can be 
+ 274:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *                                               168 MHz by activating the over-drive mode.
+ 275:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *            @arg PWR_REGULATOR_VOLTAGE_SCALE3: Regulator voltage output range 3 mode,
+ 276:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *                                               the maximum value of fHCLK is 120 MHz.
+ 277:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @note To update the system clock frequency(SYSCLK):
+ 278:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *        - Set the HSI or HSE as system clock frequency using the HAL_RCC_ClockConfig().
+ 279:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *        - Call the HAL_RCC_OscConfig() to configure the PLL.
+ 280:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *        - Call HAL_PWREx_ConfigVoltageScaling() API to adjust the voltage scale.
+ 281:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *        - Set the new system clock frequency using the HAL_RCC_ClockConfig().
+ 282:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @note The scale can be modified only when the HSI or HSE clock source is selected 
+ 283:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *        as system clock source, otherwise the API returns HAL_ERROR.  
+ 284:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @note When the PLL is OFF, the voltage scale 3 is automatically selected and the VOS bits
+ 285:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *       value in the PWR_CR1 register are not taken in account.
+ARM GAS  /tmp/cc7Jllzz.s 			page 11
+
+
+ 286:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @note This API forces the PLL state ON to allow the possibility to configure the voltage scale 
+ 287:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @note The new voltage scale is active only when the PLL is ON.  
+ 288:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @retval HAL Status
+ 289:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */
+ 290:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** HAL_StatusTypeDef HAL_PWREx_ControlVoltageScaling(uint32_t VoltageScaling)
+ 291:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** {
+ 281              		.loc 1 291 1 is_stmt 1 view -0
+ 282              		.cfi_startproc
+ 283              		@ args = 0, pretend = 0, frame = 8
+ 284              		@ frame_needed = 0, uses_anonymous_args = 0
+ 292:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   uint32_t tickstart = 0U;
+ 285              		.loc 1 292 3 view .LVU59
+ 293:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   
+ 294:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   assert_param(IS_PWR_VOLTAGE_SCALING_RANGE(VoltageScaling));
+ 286              		.loc 1 294 3 view .LVU60
+ 295:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   
+ 296:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   /* Enable PWR RCC Clock Peripheral */
+ 297:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   __HAL_RCC_PWR_CLK_ENABLE();
+ 287              		.loc 1 297 3 view .LVU61
+ 288              	.LBB2:
+ 289              		.loc 1 297 3 view .LVU62
+ 290              	.LBE2:
+ 291:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   uint32_t tickstart = 0U;
+ 291              		.loc 1 291 1 is_stmt 0 view .LVU63
+ 292 0000 70B5     		push	{r4, r5, r6, lr}
+ 293              	.LCFI2:
+ 294              		.cfi_def_cfa_offset 16
+ 295              		.cfi_offset 4, -16
+ 296              		.cfi_offset 5, -12
+ 297              		.cfi_offset 6, -8
+ 298              		.cfi_offset 14, -4
+ 299 0002 82B0     		sub	sp, sp, #8
+ 300              	.LCFI3:
+ 301              		.cfi_def_cfa_offset 24
+ 302              	.LBB3:
+ 303              		.loc 1 297 3 view .LVU64
+ 304 0004 294C     		ldr	r4, .L39
+ 305 0006 0022     		movs	r2, #0
+ 306 0008 0092     		str	r2, [sp]
+ 307              		.loc 1 297 3 is_stmt 1 view .LVU65
+ 308 000a 236C     		ldr	r3, [r4, #64]
+ 309 000c 43F08053 		orr	r3, r3, #268435456
+ 310 0010 2364     		str	r3, [r4, #64]
+ 311              		.loc 1 297 3 view .LVU66
+ 312 0012 236C     		ldr	r3, [r4, #64]
+ 313 0014 03F08053 		and	r3, r3, #268435456
+ 314 0018 0093     		str	r3, [sp]
+ 315              		.loc 1 297 3 view .LVU67
+ 316 001a 009B     		ldr	r3, [sp]
+ 317              	.LBE3:
+ 318              		.loc 1 297 3 view .LVU68
+ 298:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   
+ 299:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   /* Check if the PLL is used as system clock or not */
+ 300:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   if(__HAL_RCC_GET_SYSCLK_SOURCE() != RCC_CFGR_SWS_PLL)
+ 319              		.loc 1 300 3 view .LVU69
+ 320              		.loc 1 300 6 is_stmt 0 view .LVU70
+ 321 001c A368     		ldr	r3, [r4, #8]
+ARM GAS  /tmp/cc7Jllzz.s 			page 12
+
+
+ 322 001e 03F00C03 		and	r3, r3, #12
+ 323              		.loc 1 300 5 view .LVU71
+ 324 0022 082B     		cmp	r3, #8
+ 325 0024 3ED0     		beq	.L36
+ 301:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   {
+ 302:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     /* Disable the main PLL */
+ 303:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     __HAL_RCC_PLL_DISABLE();
+ 326              		.loc 1 303 5 view .LVU72
+ 327 0026 224B     		ldr	r3, .L39+4
+ 328 0028 1A66     		str	r2, [r3, #96]
+ 329 002a 0646     		mov	r6, r0
+ 330              		.loc 1 303 5 is_stmt 1 view .LVU73
+ 304:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     
+ 305:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     /* Get Start Tick */
+ 306:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     tickstart = HAL_GetTick();    
+ 331              		.loc 1 306 5 view .LVU74
+ 332              		.loc 1 306 17 is_stmt 0 view .LVU75
+ 333 002c FFF7FEFF 		bl	HAL_GetTick
+ 334              	.LVL15:
+ 335              		.loc 1 306 17 view .LVU76
+ 336 0030 0546     		mov	r5, r0
+ 337              	.LVL16:
+ 307:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     /* Wait till PLL is disabled */  
+ 308:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     while(__HAL_RCC_GET_FLAG(RCC_FLAG_PLLRDY) != RESET)
+ 338              		.loc 1 308 5 is_stmt 1 view .LVU77
+ 339              		.loc 1 308 10 is_stmt 0 view .LVU78
+ 340 0032 04E0     		b	.L29
+ 341              	.LVL17:
+ 342              	.L30:
+ 309:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     {
+ 310:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       if((HAL_GetTick() - tickstart ) > PLL_TIMEOUT_VALUE)
+ 343              		.loc 1 310 11 view .LVU79
+ 344 0034 FFF7FEFF 		bl	HAL_GetTick
+ 345              	.LVL18:
+ 346              		.loc 1 310 25 view .LVU80
+ 347 0038 431B     		subs	r3, r0, r5
+ 348              		.loc 1 310 9 view .LVU81
+ 349 003a 022B     		cmp	r3, #2
+ 350 003c 2FD8     		bhi	.L32
+ 351              	.L29:
+ 352              		.loc 1 310 7 is_stmt 1 view .LVU82
+ 308:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     {
+ 353              		.loc 1 308 10 view .LVU83
+ 308:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     {
+ 354              		.loc 1 308 11 is_stmt 0 view .LVU84
+ 355 003e 2368     		ldr	r3, [r4]
+ 308:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     {
+ 356              		.loc 1 308 10 view .LVU85
+ 357 0040 13F00073 		ands	r3, r3, #33554432
+ 358 0044 F6D1     		bne	.L30
+ 311:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       {
+ 312:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****         return HAL_TIMEOUT;
+ 313:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       }
+ 314:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     }
+ 315:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     
+ 316:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     /* Set Range */
+ 317:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     __HAL_PWR_VOLTAGESCALING_CONFIG(VoltageScaling);
+ARM GAS  /tmp/cc7Jllzz.s 			page 13
+
+
+ 359              		.loc 1 317 5 is_stmt 1 view .LVU86
+ 360              	.LBB4:
+ 361              		.loc 1 317 5 view .LVU87
+ 362 0046 1B4A     		ldr	r2, .L39+8
+ 363 0048 0193     		str	r3, [sp, #4]
+ 364              		.loc 1 317 5 view .LVU88
+ 365 004a 1368     		ldr	r3, [r2]
+ 366              	.LBE4:
+ 318:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     
+ 319:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     /* Enable the main PLL */
+ 320:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     __HAL_RCC_PLL_ENABLE();
+ 367              		.loc 1 320 5 is_stmt 0 view .LVU89
+ 368 004c 1849     		ldr	r1, .L39+4
+ 321:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     
+ 322:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     /* Get Start Tick */
+ 323:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     tickstart = HAL_GetTick();
+ 324:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     /* Wait till PLL is ready */  
+ 325:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     while(__HAL_RCC_GET_FLAG(RCC_FLAG_PLLRDY) == RESET)
+ 369              		.loc 1 325 11 view .LVU90
+ 370 004e 174D     		ldr	r5, .L39
+ 371              	.LVL19:
+ 372              	.LBB5:
+ 317:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     
+ 373              		.loc 1 317 5 view .LVU91
+ 374 0050 23F44043 		bic	r3, r3, #49152
+ 375 0054 1E43     		orrs	r6, r6, r3
+ 376              	.LVL20:
+ 317:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     
+ 377              		.loc 1 317 5 view .LVU92
+ 378 0056 1660     		str	r6, [r2]
+ 317:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     
+ 379              		.loc 1 317 5 is_stmt 1 view .LVU93
+ 380 0058 1368     		ldr	r3, [r2]
+ 381 005a 03F44043 		and	r3, r3, #49152
+ 382 005e 0193     		str	r3, [sp, #4]
+ 317:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     
+ 383              		.loc 1 317 5 view .LVU94
+ 384              	.LBE5:
+ 320:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     
+ 385              		.loc 1 320 5 is_stmt 0 view .LVU95
+ 386 0060 0122     		movs	r2, #1
+ 387              	.LBB6:
+ 317:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     
+ 388              		.loc 1 317 5 view .LVU96
+ 389 0062 019B     		ldr	r3, [sp, #4]
+ 390              	.LBE6:
+ 317:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     
+ 391              		.loc 1 317 5 is_stmt 1 view .LVU97
+ 320:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     
+ 392              		.loc 1 320 5 view .LVU98
+ 393 0064 0A66     		str	r2, [r1, #96]
+ 323:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     /* Wait till PLL is ready */  
+ 394              		.loc 1 323 5 view .LVU99
+ 323:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     /* Wait till PLL is ready */  
+ 395              		.loc 1 323 17 is_stmt 0 view .LVU100
+ 396 0066 FFF7FEFF 		bl	HAL_GetTick
+ 397              	.LVL21:
+ARM GAS  /tmp/cc7Jllzz.s 			page 14
+
+
+ 398 006a 0446     		mov	r4, r0
+ 399              	.LVL22:
+ 400              		.loc 1 325 5 is_stmt 1 view .LVU101
+ 401              		.loc 1 325 10 is_stmt 0 view .LVU102
+ 402 006c 04E0     		b	.L31
+ 403              	.LVL23:
+ 404              	.L33:
+ 326:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     {
+ 327:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       if((HAL_GetTick() - tickstart ) > PLL_TIMEOUT_VALUE)
+ 405              		.loc 1 327 11 view .LVU103
+ 406 006e FFF7FEFF 		bl	HAL_GetTick
+ 407              	.LVL24:
+ 408              		.loc 1 327 25 view .LVU104
+ 409 0072 001B     		subs	r0, r0, r4
+ 410              		.loc 1 327 9 view .LVU105
+ 411 0074 0228     		cmp	r0, #2
+ 412 0076 12D8     		bhi	.L32
+ 413              	.L31:
+ 414              		.loc 1 327 7 is_stmt 1 view .LVU106
+ 325:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     {
+ 415              		.loc 1 325 10 view .LVU107
+ 325:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     {
+ 416              		.loc 1 325 11 is_stmt 0 view .LVU108
+ 417 0078 2B68     		ldr	r3, [r5]
+ 325:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     {
+ 418              		.loc 1 325 10 view .LVU109
+ 419 007a 9A01     		lsls	r2, r3, #6
+ 420 007c F7D5     		bpl	.L33
+ 328:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       {
+ 329:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****         return HAL_TIMEOUT;
+ 330:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       } 
+ 331:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     }
+ 332:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     
+ 333:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     /* Get Start Tick */
+ 334:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     tickstart = HAL_GetTick();
+ 421              		.loc 1 334 5 is_stmt 1 view .LVU110
+ 422              		.loc 1 334 17 is_stmt 0 view .LVU111
+ 423 007e FFF7FEFF 		bl	HAL_GetTick
+ 424              	.LVL25:
+ 335:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     while((__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY) == RESET))
+ 425              		.loc 1 335 12 view .LVU112
+ 426 0082 0C4D     		ldr	r5, .L39+8
+ 334:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     while((__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY) == RESET))
+ 427              		.loc 1 334 17 view .LVU113
+ 428 0084 0446     		mov	r4, r0
+ 429              	.LVL26:
+ 430              		.loc 1 335 5 is_stmt 1 view .LVU114
+ 431              		.loc 1 335 10 is_stmt 0 view .LVU115
+ 432 0086 05E0     		b	.L34
+ 433              	.LVL27:
+ 434              	.L35:
+ 336:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     {
+ 337:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       if((HAL_GetTick() - tickstart ) > PWR_VOSRDY_TIMEOUT_VALUE)
+ 435              		.loc 1 337 11 view .LVU116
+ 436 0088 FFF7FEFF 		bl	HAL_GetTick
+ 437              	.LVL28:
+ 438              		.loc 1 337 25 view .LVU117
+ARM GAS  /tmp/cc7Jllzz.s 			page 15
+
+
+ 439 008c 001B     		subs	r0, r0, r4
+ 440              		.loc 1 337 9 view .LVU118
+ 441 008e B0F57A7F 		cmp	r0, #1000
+ 442 0092 04D8     		bhi	.L32
+ 443              	.L34:
+ 444              		.loc 1 337 7 is_stmt 1 view .LVU119
+ 335:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     {
+ 445              		.loc 1 335 10 view .LVU120
+ 335:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     {
+ 446              		.loc 1 335 12 is_stmt 0 view .LVU121
+ 447 0094 6B68     		ldr	r3, [r5, #4]
+ 335:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     {
+ 448              		.loc 1 335 10 view .LVU122
+ 449 0096 5B04     		lsls	r3, r3, #17
+ 450 0098 F6D5     		bpl	.L35
+ 338:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       {
+ 339:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****         return HAL_TIMEOUT;
+ 340:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       } 
+ 341:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     }
+ 342:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   }
+ 343:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   else
+ 344:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   {
+ 345:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     return HAL_ERROR;
+ 346:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   }
+ 347:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 348:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   return HAL_OK;
+ 451              		.loc 1 348 10 view .LVU123
+ 452 009a 0020     		movs	r0, #0
+ 453 009c 00E0     		b	.L28
+ 454              	.LVL29:
+ 455              	.L32:
+ 312:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       }
+ 456              		.loc 1 312 16 view .LVU124
+ 457 009e 0320     		movs	r0, #3
+ 458              	.L28:
+ 349:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** }
+ 459              		.loc 1 349 1 view .LVU125
+ 460 00a0 02B0     		add	sp, sp, #8
+ 461              	.LCFI4:
+ 462              		.cfi_remember_state
+ 463              		.cfi_def_cfa_offset 16
+ 464              		@ sp needed
+ 465 00a2 70BD     		pop	{r4, r5, r6, pc}
+ 466              	.LVL30:
+ 467              	.L36:
+ 468              	.LCFI5:
+ 469              		.cfi_restore_state
+ 345:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   }
+ 470              		.loc 1 345 12 view .LVU126
+ 471 00a4 0120     		movs	r0, #1
+ 472              	.LVL31:
+ 473              		.loc 1 349 1 view .LVU127
+ 474 00a6 02B0     		add	sp, sp, #8
+ 475              	.LCFI6:
+ 476              		.cfi_def_cfa_offset 16
+ 477              		@ sp needed
+ 478 00a8 70BD     		pop	{r4, r5, r6, pc}
+ARM GAS  /tmp/cc7Jllzz.s 			page 16
+
+
+ 479              	.L40:
+ 480 00aa 00BF     		.align	2
+ 481              	.L39:
+ 482 00ac 00380240 		.word	1073887232
+ 483 00b0 00004742 		.word	1111949312
+ 484 00b4 00700040 		.word	1073770496
+ 485              		.cfi_endproc
+ 486              	.LFE135:
+ 488              		.section	.text.HAL_PWREx_EnableMainRegulatorLowVoltage,"ax",%progbits
+ 489              		.align	1
+ 490              		.p2align 2,,3
+ 491              		.global	HAL_PWREx_EnableMainRegulatorLowVoltage
+ 492              		.syntax unified
+ 493              		.thumb
+ 494              		.thumb_func
+ 495              		.fpu fpv4-sp-d16
+ 497              	HAL_PWREx_EnableMainRegulatorLowVoltage:
+ 498              	.LFB136:
+ 350:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** #endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx */
+ 351:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 352:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** #if defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F410Tx) || defined(STM32F410Cx) ||
+ 353:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     defined(STM32F411xE) || defined(STM32F412Zx) || defined(STM32F412Vx) || defined(STM32F412Rx) ||
+ 354:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     defined(STM32F413xx) || defined(STM32F423xx)
+ 355:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /**
+ 356:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @brief Enables Main Regulator low voltage mode.
+ 357:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @note  This mode is only available for STM32F401xx/STM32F410xx/STM32F411xx/STM32F412Zx/STM32F41
+ 358:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *        STM32F413xx/STM32F423xx devices.   
+ 359:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @retval None
+ 360:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */
+ 361:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** void HAL_PWREx_EnableMainRegulatorLowVoltage(void)
+ 362:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** {
+ 499              		.loc 1 362 1 is_stmt 1 view -0
+ 500              		.cfi_startproc
+ 501              		@ args = 0, pretend = 0, frame = 0
+ 502              		@ frame_needed = 0, uses_anonymous_args = 0
+ 503              		@ link register save eliminated.
+ 363:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *(__IO uint32_t *) CR_MRLVDS_BB = (uint32_t)ENABLE;
+ 504              		.loc 1 363 3 view .LVU129
+ 505              		.loc 1 363 35 is_stmt 0 view .LVU130
+ 506 0000 014B     		ldr	r3, .L42
+ 507 0002 0122     		movs	r2, #1
+ 508 0004 DA62     		str	r2, [r3, #44]
+ 364:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** }
+ 509              		.loc 1 364 1 view .LVU131
+ 510 0006 7047     		bx	lr
+ 511              	.L43:
+ 512              		.align	2
+ 513              	.L42:
+ 514 0008 00000E42 		.word	1108213760
+ 515              		.cfi_endproc
+ 516              	.LFE136:
+ 518              		.section	.text.HAL_PWREx_DisableMainRegulatorLowVoltage,"ax",%progbits
+ 519              		.align	1
+ 520              		.p2align 2,,3
+ 521              		.global	HAL_PWREx_DisableMainRegulatorLowVoltage
+ 522              		.syntax unified
+ 523              		.thumb
+ARM GAS  /tmp/cc7Jllzz.s 			page 17
+
+
+ 524              		.thumb_func
+ 525              		.fpu fpv4-sp-d16
+ 527              	HAL_PWREx_DisableMainRegulatorLowVoltage:
+ 528              	.LFB137:
+ 365:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 366:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /**
+ 367:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @brief Disables Main Regulator low voltage mode.
+ 368:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @note  This mode is only available for STM32F401xx/STM32F410xx/STM32F411xx/STM32F412Zx/STM32F41
+ 369:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *        STM32F413xx/STM32F423xxdevices. 
+ 370:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @retval None
+ 371:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */
+ 372:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** void HAL_PWREx_DisableMainRegulatorLowVoltage(void)
+ 373:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** {
+ 529              		.loc 1 373 1 is_stmt 1 view -0
+ 530              		.cfi_startproc
+ 531              		@ args = 0, pretend = 0, frame = 0
+ 532              		@ frame_needed = 0, uses_anonymous_args = 0
+ 533              		@ link register save eliminated.
+ 374:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *(__IO uint32_t *) CR_MRLVDS_BB = (uint32_t)DISABLE;
+ 534              		.loc 1 374 3 view .LVU133
+ 535              		.loc 1 374 35 is_stmt 0 view .LVU134
+ 536 0000 014B     		ldr	r3, .L45
+ 537 0002 0022     		movs	r2, #0
+ 538 0004 DA62     		str	r2, [r3, #44]
+ 375:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** }
+ 539              		.loc 1 375 1 view .LVU135
+ 540 0006 7047     		bx	lr
+ 541              	.L46:
+ 542              		.align	2
+ 543              	.L45:
+ 544 0008 00000E42 		.word	1108213760
+ 545              		.cfi_endproc
+ 546              	.LFE137:
+ 548              		.section	.text.HAL_PWREx_EnableLowRegulatorLowVoltage,"ax",%progbits
+ 549              		.align	1
+ 550              		.p2align 2,,3
+ 551              		.global	HAL_PWREx_EnableLowRegulatorLowVoltage
+ 552              		.syntax unified
+ 553              		.thumb
+ 554              		.thumb_func
+ 555              		.fpu fpv4-sp-d16
+ 557              	HAL_PWREx_EnableLowRegulatorLowVoltage:
+ 558              	.LFB138:
+ 376:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 377:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /**
+ 378:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @brief Enables Low Power Regulator low voltage mode.
+ 379:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @note  This mode is only available for STM32F401xx/STM32F410xx/STM32F411xx/STM32F412Zx/STM32F41
+ 380:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *        STM32F413xx/STM32F423xx devices.   
+ 381:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @retval None
+ 382:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */
+ 383:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** void HAL_PWREx_EnableLowRegulatorLowVoltage(void)
+ 384:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** {
+ 559              		.loc 1 384 1 is_stmt 1 view -0
+ 560              		.cfi_startproc
+ 561              		@ args = 0, pretend = 0, frame = 0
+ 562              		@ frame_needed = 0, uses_anonymous_args = 0
+ 563              		@ link register save eliminated.
+ARM GAS  /tmp/cc7Jllzz.s 			page 18
+
+
+ 385:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *(__IO uint32_t *) CR_LPLVDS_BB = (uint32_t)ENABLE;
+ 564              		.loc 1 385 3 view .LVU137
+ 565              		.loc 1 385 35 is_stmt 0 view .LVU138
+ 566 0000 014B     		ldr	r3, .L48
+ 567 0002 0122     		movs	r2, #1
+ 568 0004 9A62     		str	r2, [r3, #40]
+ 386:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** }
+ 569              		.loc 1 386 1 view .LVU139
+ 570 0006 7047     		bx	lr
+ 571              	.L49:
+ 572              		.align	2
+ 573              	.L48:
+ 574 0008 00000E42 		.word	1108213760
+ 575              		.cfi_endproc
+ 576              	.LFE138:
+ 578              		.section	.text.HAL_PWREx_DisableLowRegulatorLowVoltage,"ax",%progbits
+ 579              		.align	1
+ 580              		.p2align 2,,3
+ 581              		.global	HAL_PWREx_DisableLowRegulatorLowVoltage
+ 582              		.syntax unified
+ 583              		.thumb
+ 584              		.thumb_func
+ 585              		.fpu fpv4-sp-d16
+ 587              	HAL_PWREx_DisableLowRegulatorLowVoltage:
+ 588              	.LFB139:
+ 387:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
+ 388:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /**
+ 389:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @brief Disables Low Power Regulator low voltage mode.
+ 390:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @note  This mode is only available for STM32F401xx/STM32F410xx/STM32F411xx/STM32F412Zx/STM32F41
+ 391:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *        STM32F413xx/STM32F423xx  devices.   
+ 392:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @retval None
+ 393:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   */
+ 394:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** void HAL_PWREx_DisableLowRegulatorLowVoltage(void)
+ 395:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** {
+ 589              		.loc 1 395 1 is_stmt 1 view -0
+ 590              		.cfi_startproc
+ 591              		@ args = 0, pretend = 0, frame = 0
+ 592              		@ frame_needed = 0, uses_anonymous_args = 0
+ 593              		@ link register save eliminated.
+ 396:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   *(__IO uint32_t *) CR_LPLVDS_BB = (uint32_t)DISABLE;
+ 594              		.loc 1 396 3 view .LVU141
+ 595              		.loc 1 396 35 is_stmt 0 view .LVU142
+ 596 0000 014B     		ldr	r3, .L51
+ 597 0002 0022     		movs	r2, #0
+ 598 0004 9A62     		str	r2, [r3, #40]
+ 397:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** }
+ 599              		.loc 1 397 1 view .LVU143
+ 600 0006 7047     		bx	lr
+ 601              	.L52:
+ 602              		.align	2
+ 603              	.L51:
+ 604 0008 00000E42 		.word	1108213760
+ 605              		.cfi_endproc
+ 606              	.LFE139:
+ 608              		.text
+ 609              	.Letext0:
+ 610              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+ARM GAS  /tmp/cc7Jllzz.s 			page 19
+
+
+ 611              		.file 3 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h"
+ 612              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 613              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 614              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  /tmp/cc7Jllzz.s 			page 20
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f4xx_hal_pwr_ex.c
+     /tmp/cc7Jllzz.s:18     .text.HAL_PWREx_EnableBkUpReg:0000000000000000 $t
+     /tmp/cc7Jllzz.s:27     .text.HAL_PWREx_EnableBkUpReg:0000000000000000 HAL_PWREx_EnableBkUpReg
+     /tmp/cc7Jllzz.s:94     .text.HAL_PWREx_EnableBkUpReg:0000000000000030 $d
+     /tmp/cc7Jllzz.s:100    .text.HAL_PWREx_DisableBkUpReg:0000000000000000 $t
+     /tmp/cc7Jllzz.s:108    .text.HAL_PWREx_DisableBkUpReg:0000000000000000 HAL_PWREx_DisableBkUpReg
+     /tmp/cc7Jllzz.s:174    .text.HAL_PWREx_DisableBkUpReg:0000000000000030 $d
+     /tmp/cc7Jllzz.s:180    .text.HAL_PWREx_EnableFlashPowerDown:0000000000000000 $t
+     /tmp/cc7Jllzz.s:188    .text.HAL_PWREx_EnableFlashPowerDown:0000000000000000 HAL_PWREx_EnableFlashPowerDown
+     /tmp/cc7Jllzz.s:205    .text.HAL_PWREx_EnableFlashPowerDown:0000000000000008 $d
+     /tmp/cc7Jllzz.s:210    .text.HAL_PWREx_DisableFlashPowerDown:0000000000000000 $t
+     /tmp/cc7Jllzz.s:218    .text.HAL_PWREx_DisableFlashPowerDown:0000000000000000 HAL_PWREx_DisableFlashPowerDown
+     /tmp/cc7Jllzz.s:235    .text.HAL_PWREx_DisableFlashPowerDown:0000000000000008 $d
+     /tmp/cc7Jllzz.s:240    .text.HAL_PWREx_GetVoltageRange:0000000000000000 $t
+     /tmp/cc7Jllzz.s:248    .text.HAL_PWREx_GetVoltageRange:0000000000000000 HAL_PWREx_GetVoltageRange
+     /tmp/cc7Jllzz.s:265    .text.HAL_PWREx_GetVoltageRange:000000000000000c $d
+     /tmp/cc7Jllzz.s:270    .text.HAL_PWREx_ControlVoltageScaling:0000000000000000 $t
+     /tmp/cc7Jllzz.s:278    .text.HAL_PWREx_ControlVoltageScaling:0000000000000000 HAL_PWREx_ControlVoltageScaling
+     /tmp/cc7Jllzz.s:482    .text.HAL_PWREx_ControlVoltageScaling:00000000000000ac $d
+     /tmp/cc7Jllzz.s:489    .text.HAL_PWREx_EnableMainRegulatorLowVoltage:0000000000000000 $t
+     /tmp/cc7Jllzz.s:497    .text.HAL_PWREx_EnableMainRegulatorLowVoltage:0000000000000000 HAL_PWREx_EnableMainRegulatorLowVoltage
+     /tmp/cc7Jllzz.s:514    .text.HAL_PWREx_EnableMainRegulatorLowVoltage:0000000000000008 $d
+     /tmp/cc7Jllzz.s:519    .text.HAL_PWREx_DisableMainRegulatorLowVoltage:0000000000000000 $t
+     /tmp/cc7Jllzz.s:527    .text.HAL_PWREx_DisableMainRegulatorLowVoltage:0000000000000000 HAL_PWREx_DisableMainRegulatorLowVoltage
+     /tmp/cc7Jllzz.s:544    .text.HAL_PWREx_DisableMainRegulatorLowVoltage:0000000000000008 $d
+     /tmp/cc7Jllzz.s:549    .text.HAL_PWREx_EnableLowRegulatorLowVoltage:0000000000000000 $t
+     /tmp/cc7Jllzz.s:557    .text.HAL_PWREx_EnableLowRegulatorLowVoltage:0000000000000000 HAL_PWREx_EnableLowRegulatorLowVoltage
+     /tmp/cc7Jllzz.s:574    .text.HAL_PWREx_EnableLowRegulatorLowVoltage:0000000000000008 $d
+     /tmp/cc7Jllzz.s:579    .text.HAL_PWREx_DisableLowRegulatorLowVoltage:0000000000000000 $t
+     /tmp/cc7Jllzz.s:587    .text.HAL_PWREx_DisableLowRegulatorLowVoltage:0000000000000000 HAL_PWREx_DisableLowRegulatorLowVoltage
+     /tmp/cc7Jllzz.s:604    .text.HAL_PWREx_DisableLowRegulatorLowVoltage:0000000000000008 $d
+
+UNDEFINED SYMBOLS
+HAL_GetTick

@@ -1,0 +1,470 @@
+ARM GAS  /tmp/ccY4zrr4.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"retarget.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.uart_init,"ax",%progbits
+  18              		.align	1
+  19              		.p2align 2,,3
+  20              		.global	uart_init
+  21              		.arch armv7e-m
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  25              		.fpu fpv4-sp-d16
+  27              	uart_init:
+  28              	.LFB133:
+  29              		.file 1 "Src/retarget.c"
+   1:Src/retarget.c **** #include  <errno.h>
+   2:Src/retarget.c **** #include  <sys/unistd.h> // STDOUT_FILENO, STDERR_FILENO
+   3:Src/retarget.c **** #include <stdio.h>
+   4:Src/retarget.c **** #include "retarget.h"
+   5:Src/retarget.c **** #include "stm32f4xx.h"
+   6:Src/retarget.c **** #include "stm32f4xx_hal.h"
+   7:Src/retarget.c **** #include "stm32f4xx_hal_uart.h"
+   8:Src/retarget.c **** 
+   9:Src/retarget.c **** UART_HandleTypeDef __huart2;
+  10:Src/retarget.c **** 
+  11:Src/retarget.c **** void uart_init(void) {
+  30              		.loc 1 11 22 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 32
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  12:Src/retarget.c ****     // UART GPIO init
+  13:Src/retarget.c ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+  34              		.loc 1 13 5 view .LVU1
+  35              	.LBB2:
+  36              		.loc 1 13 5 view .LVU2
+  37              	.LBE2:
+  11:Src/retarget.c ****     // UART GPIO init
+  38              		.loc 1 11 22 is_stmt 0 view .LVU3
+  39 0000 70B5     		push	{r4, r5, r6, lr}
+  40              	.LCFI0:
+  41              		.cfi_def_cfa_offset 16
+  42              		.cfi_offset 4, -16
+  43              		.cfi_offset 5, -12
+  44              		.cfi_offset 6, -8
+ARM GAS  /tmp/ccY4zrr4.s 			page 2
+
+
+  45              		.cfi_offset 14, -4
+  46 0002 88B0     		sub	sp, sp, #32
+  47              	.LCFI1:
+  48              		.cfi_def_cfa_offset 48
+  49              	.LBB3:
+  50              		.loc 1 13 5 view .LVU4
+  51 0004 194D     		ldr	r5, .L4
+  52              	.LBE3:
+  14:Src/retarget.c ****     // PA2 and PA3 for UART2
+  15:Src/retarget.c ****     GPIO_InitTypeDef gpio_init;
+  16:Src/retarget.c ****     gpio_init.Pin = GPIO_PIN_2 | GPIO_PIN_3;
+  17:Src/retarget.c ****     gpio_init.Mode = GPIO_MODE_AF_PP;
+  18:Src/retarget.c ****     gpio_init.Alternate = GPIO_AF7_USART2;
+  19:Src/retarget.c ****     gpio_init.Speed = GPIO_SPEED_MEDIUM;
+  20:Src/retarget.c ****     gpio_init.Pull = GPIO_PULLUP;
+  21:Src/retarget.c ****     HAL_GPIO_Init(GPIOA, &gpio_init);
+  53              		.loc 1 21 5 view .LVU5
+  54 0006 1A48     		ldr	r0, .L4+4
+  55              	.LBB4:
+  13:Src/retarget.c ****     // PA2 and PA3 for UART2
+  56              		.loc 1 13 5 view .LVU6
+  57 0008 0024     		movs	r4, #0
+  58 000a 0194     		str	r4, [sp, #4]
+  13:Src/retarget.c ****     // PA2 and PA3 for UART2
+  59              		.loc 1 13 5 is_stmt 1 view .LVU7
+  60 000c 2B6B     		ldr	r3, [r5, #48]
+  61 000e 43F00103 		orr	r3, r3, #1
+  62 0012 2B63     		str	r3, [r5, #48]
+  13:Src/retarget.c ****     // PA2 and PA3 for UART2
+  63              		.loc 1 13 5 view .LVU8
+  64 0014 2B6B     		ldr	r3, [r5, #48]
+  65 0016 03F00103 		and	r3, r3, #1
+  66              	.LBE4:
+  16:Src/retarget.c ****     gpio_init.Mode = GPIO_MODE_AF_PP;
+  67              		.loc 1 16 19 is_stmt 0 view .LVU9
+  68 001a 0C26     		movs	r6, #12
+  69              	.LBB5:
+  13:Src/retarget.c ****     // PA2 and PA3 for UART2
+  70              		.loc 1 13 5 view .LVU10
+  71 001c 0193     		str	r3, [sp, #4]
+  13:Src/retarget.c ****     // PA2 and PA3 for UART2
+  72              		.loc 1 13 5 is_stmt 1 view .LVU11
+  73              	.LBE5:
+  17:Src/retarget.c ****     gpio_init.Alternate = GPIO_AF7_USART2;
+  74              		.loc 1 17 20 is_stmt 0 view .LVU12
+  75 001e 0222     		movs	r2, #2
+  76 0020 CDE90362 		strd	r6, r2, [sp, #12]
+  77              	.LBB6:
+  13:Src/retarget.c ****     // PA2 and PA3 for UART2
+  78              		.loc 1 13 5 view .LVU13
+  79 0024 019B     		ldr	r3, [sp, #4]
+  80              	.LBE6:
+  13:Src/retarget.c ****     // PA2 and PA3 for UART2
+  81              		.loc 1 13 5 is_stmt 1 view .LVU14
+  15:Src/retarget.c ****     gpio_init.Pin = GPIO_PIN_2 | GPIO_PIN_3;
+  82              		.loc 1 15 5 view .LVU15
+  16:Src/retarget.c ****     gpio_init.Mode = GPIO_MODE_AF_PP;
+ARM GAS  /tmp/ccY4zrr4.s 			page 3
+
+
+  83              		.loc 1 16 5 view .LVU16
+  18:Src/retarget.c ****     gpio_init.Speed = GPIO_SPEED_MEDIUM;
+  84              		.loc 1 18 5 view .LVU17
+  18:Src/retarget.c ****     gpio_init.Speed = GPIO_SPEED_MEDIUM;
+  85              		.loc 1 18 25 is_stmt 0 view .LVU18
+  86 0026 0722     		movs	r2, #7
+  19:Src/retarget.c ****     gpio_init.Pull = GPIO_PULLUP;
+  87              		.loc 1 19 21 view .LVU19
+  88 0028 0123     		movs	r3, #1
+  89              		.loc 1 21 5 view .LVU20
+  90 002a 0DEB0601 		add	r1, sp, r6
+  20:Src/retarget.c ****     HAL_GPIO_Init(GPIOA, &gpio_init);
+  91              		.loc 1 20 20 view .LVU21
+  92 002e CDE90533 		strd	r3, r3, [sp, #20]
+  18:Src/retarget.c ****     gpio_init.Speed = GPIO_SPEED_MEDIUM;
+  93              		.loc 1 18 25 view .LVU22
+  94 0032 0792     		str	r2, [sp, #28]
+  19:Src/retarget.c ****     gpio_init.Pull = GPIO_PULLUP;
+  95              		.loc 1 19 5 is_stmt 1 view .LVU23
+  96              		.loc 1 21 5 view .LVU24
+  97 0034 FFF7FEFF 		bl	HAL_GPIO_Init
+  98              	.LVL0:
+  22:Src/retarget.c **** 
+  23:Src/retarget.c ****     // setup USART
+  24:Src/retarget.c ****     __USART2_CLK_ENABLE();
+  99              		.loc 1 24 5 view .LVU25
+ 100              	.LBB7:
+ 101              		.loc 1 24 5 view .LVU26
+ 102 0038 0294     		str	r4, [sp, #8]
+ 103              		.loc 1 24 5 view .LVU27
+ 104 003a 2B6C     		ldr	r3, [r5, #64]
+ 105              	.LBE7:
+  25:Src/retarget.c ****     __huart2.Instance = USART2;
+ 106              		.loc 1 25 23 is_stmt 0 view .LVU28
+ 107 003c 0D48     		ldr	r0, .L4+8
+ 108 003e 0E4A     		ldr	r2, .L4+12
+  26:Src/retarget.c ****     __huart2.Init.BaudRate = 115200;
+  27:Src/retarget.c ****     __huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  28:Src/retarget.c ****     __huart2.Init.StopBits = UART_STOPBITS_1;
+  29:Src/retarget.c ****     __huart2.Init.Parity = UART_PARITY_NONE;
+  30:Src/retarget.c ****     __huart2.Init.Mode = UART_MODE_TX_RX;
+ 109              		.loc 1 30 24 view .LVU29
+ 110 0040 4661     		str	r6, [r0, #20]
+ 111              	.LBB8:
+  24:Src/retarget.c ****     __huart2.Instance = USART2;
+ 112              		.loc 1 24 5 view .LVU30
+ 113 0042 43F40033 		orr	r3, r3, #131072
+ 114 0046 2B64     		str	r3, [r5, #64]
+  24:Src/retarget.c ****     __huart2.Instance = USART2;
+ 115              		.loc 1 24 5 is_stmt 1 view .LVU31
+ 116 0048 2B6C     		ldr	r3, [r5, #64]
+ 117              	.LBE8:
+  29:Src/retarget.c ****     __huart2.Init.Mode = UART_MODE_TX_RX;
+ 118              		.loc 1 29 26 is_stmt 0 view .LVU32
+ 119 004a 0461     		str	r4, [r0, #16]
+ 120              	.LBB9:
+  24:Src/retarget.c ****     __huart2.Instance = USART2;
+ARM GAS  /tmp/ccY4zrr4.s 			page 4
+
+
+ 121              		.loc 1 24 5 view .LVU33
+ 122 004c 03F40033 		and	r3, r3, #131072
+ 123 0050 0293     		str	r3, [sp, #8]
+  24:Src/retarget.c ****     __huart2.Instance = USART2;
+ 124              		.loc 1 24 5 is_stmt 1 view .LVU34
+ 125              	.LBE9:
+  26:Src/retarget.c ****     __huart2.Init.BaudRate = 115200;
+ 126              		.loc 1 26 28 is_stmt 0 view .LVU35
+ 127 0052 4FF4E133 		mov	r3, #115200
+ 128 0056 C0E90023 		strd	r2, r3, [r0]
+  28:Src/retarget.c ****     __huart2.Init.Parity = UART_PARITY_NONE;
+ 129              		.loc 1 28 28 view .LVU36
+ 130 005a C0E90244 		strd	r4, r4, [r0, #8]
+  31:Src/retarget.c ****     __huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  32:Src/retarget.c ****     __huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+ 131              		.loc 1 32 32 view .LVU37
+ 132 005e C0E90644 		strd	r4, r4, [r0, #24]
+ 133              	.LBB10:
+  24:Src/retarget.c ****     __huart2.Instance = USART2;
+ 134              		.loc 1 24 5 view .LVU38
+ 135 0062 0299     		ldr	r1, [sp, #8]
+ 136              	.LBE10:
+  24:Src/retarget.c ****     __huart2.Instance = USART2;
+ 137              		.loc 1 24 5 is_stmt 1 view .LVU39
+  25:Src/retarget.c ****     __huart2.Init.BaudRate = 115200;
+ 138              		.loc 1 25 5 view .LVU40
+  27:Src/retarget.c ****     __huart2.Init.StopBits = UART_STOPBITS_1;
+ 139              		.loc 1 27 5 view .LVU41
+  29:Src/retarget.c ****     __huart2.Init.Mode = UART_MODE_TX_RX;
+ 140              		.loc 1 29 5 view .LVU42
+  30:Src/retarget.c ****     __huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 141              		.loc 1 30 5 view .LVU43
+  31:Src/retarget.c ****     __huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+ 142              		.loc 1 31 5 view .LVU44
+  33:Src/retarget.c ****     HAL_UART_Init(&__huart2);
+ 143              		.loc 1 33 5 view .LVU45
+ 144 0064 FFF7FEFF 		bl	HAL_UART_Init
+ 145              	.LVL1:
+  34:Src/retarget.c **** }
+ 146              		.loc 1 34 1 is_stmt 0 view .LVU46
+ 147 0068 08B0     		add	sp, sp, #32
+ 148              	.LCFI2:
+ 149              		.cfi_def_cfa_offset 16
+ 150              		@ sp needed
+ 151 006a 70BD     		pop	{r4, r5, r6, pc}
+ 152              	.L5:
+ 153              		.align	2
+ 154              	.L4:
+ 155 006c 00380240 		.word	1073887232
+ 156 0070 00000240 		.word	1073872896
+ 157 0074 00000000 		.word	.LANCHOR0
+ 158 0078 00440040 		.word	1073759232
+ 159              		.cfi_endproc
+ 160              	.LFE133:
+ 162              		.section	.text._write,"ax",%progbits
+ 163              		.align	1
+ 164              		.p2align 2,,3
+ARM GAS  /tmp/ccY4zrr4.s 			page 5
+
+
+ 165              		.global	_write
+ 166              		.syntax unified
+ 167              		.thumb
+ 168              		.thumb_func
+ 169              		.fpu fpv4-sp-d16
+ 171              	_write:
+ 172              	.LVL2:
+ 173              	.LFB134:
+  35:Src/retarget.c **** 
+  36:Src/retarget.c **** #if defined(__GNUC__)
+  37:Src/retarget.c **** int _write(int file, char *ptr, int len) {
+ 174              		.loc 1 37 42 is_stmt 1 view -0
+ 175              		.cfi_startproc
+ 176              		@ args = 0, pretend = 0, frame = 0
+ 177              		@ frame_needed = 0, uses_anonymous_args = 0
+  38:Src/retarget.c ****     HAL_UART_Transmit(&__huart2, (uint8_t*) ptr, len, HAL_MAX_DELAY);
+ 178              		.loc 1 38 5 view .LVU48
+  37:Src/retarget.c ****     HAL_UART_Transmit(&__huart2, (uint8_t*) ptr, len, HAL_MAX_DELAY);
+ 179              		.loc 1 37 42 is_stmt 0 view .LVU49
+ 180 0000 10B5     		push	{r4, lr}
+ 181              	.LCFI3:
+ 182              		.cfi_def_cfa_offset 8
+ 183              		.cfi_offset 4, -8
+ 184              		.cfi_offset 14, -4
+ 185              		.loc 1 38 5 view .LVU50
+ 186 0002 4FF0FF33 		mov	r3, #-1
+  37:Src/retarget.c ****     HAL_UART_Transmit(&__huart2, (uint8_t*) ptr, len, HAL_MAX_DELAY);
+ 187              		.loc 1 37 42 view .LVU51
+ 188 0006 1446     		mov	r4, r2
+ 189              		.loc 1 38 5 view .LVU52
+ 190 0008 0248     		ldr	r0, .L8
+ 191              	.LVL3:
+ 192              		.loc 1 38 5 view .LVU53
+ 193 000a 92B2     		uxth	r2, r2
+ 194              	.LVL4:
+ 195              		.loc 1 38 5 view .LVU54
+ 196 000c FFF7FEFF 		bl	HAL_UART_Transmit
+ 197              	.LVL5:
+  39:Src/retarget.c ****     return len;
+ 198              		.loc 1 39 5 is_stmt 1 view .LVU55
+  40:Src/retarget.c **** }
+ 199              		.loc 1 40 1 is_stmt 0 view .LVU56
+ 200 0010 2046     		mov	r0, r4
+ 201 0012 10BD     		pop	{r4, pc}
+ 202              	.LVL6:
+ 203              	.L9:
+ 204              		.loc 1 40 1 view .LVU57
+ 205              		.align	2
+ 206              	.L8:
+ 207 0014 00000000 		.word	.LANCHOR0
+ 208              		.cfi_endproc
+ 209              	.LFE134:
+ 211              		.section	.text.__io_putchar,"ax",%progbits
+ 212              		.align	1
+ 213              		.p2align 2,,3
+ 214              		.global	__io_putchar
+ 215              		.syntax unified
+ARM GAS  /tmp/ccY4zrr4.s 			page 6
+
+
+ 216              		.thumb
+ 217              		.thumb_func
+ 218              		.fpu fpv4-sp-d16
+ 220              	__io_putchar:
+ 221              	.LVL7:
+ 222              	.LFB135:
+  41:Src/retarget.c **** #elif defined(__ICCARM__)
+  42:Src/retarget.c **** int __write(int file, char *ptr, int len) {
+  43:Src/retarget.c ****     HAL_UART_Transmit(&__huart2, (uint8_t*) ptr, len, HAL_MAX_DELAY);
+  44:Src/retarget.c ****     return len;
+  45:Src/retarget.c **** }
+  46:Src/retarget.c **** #elif defined(__CC_ARM)
+  47:Src/retarget.c **** int fputc(int ch, FILE *f) {
+  48:Src/retarget.c ****     HAL_UART_Transmit(&__huart2, (uint8_t*)(&ch), 1, 1000);
+  49:Src/retarget.c ****     return ch;
+  50:Src/retarget.c **** }
+  51:Src/retarget.c **** #endif
+  52:Src/retarget.c **** 
+  53:Src/retarget.c **** 
+  54:Src/retarget.c **** int __io_putchar(int ch)
+  55:Src/retarget.c **** {
+ 223              		.loc 1 55 1 is_stmt 1 view -0
+ 224              		.cfi_startproc
+ 225              		@ args = 0, pretend = 0, frame = 8
+ 226              		@ frame_needed = 0, uses_anonymous_args = 0
+  56:Src/retarget.c ****     HAL_UART_Transmit(&__huart2,(uint8_t *)&ch,1,HAL_MAX_DELAY);
+ 227              		.loc 1 56 5 view .LVU59
+  55:Src/retarget.c ****     HAL_UART_Transmit(&__huart2,(uint8_t *)&ch,1,HAL_MAX_DELAY);
+ 228              		.loc 1 55 1 is_stmt 0 view .LVU60
+ 229 0000 00B5     		push	{lr}
+ 230              	.LCFI4:
+ 231              		.cfi_def_cfa_offset 4
+ 232              		.cfi_offset 14, -4
+ 233 0002 83B0     		sub	sp, sp, #12
+ 234              	.LCFI5:
+ 235              		.cfi_def_cfa_offset 16
+ 236              		.loc 1 56 5 view .LVU61
+ 237 0004 4FF0FF33 		mov	r3, #-1
+  55:Src/retarget.c ****     HAL_UART_Transmit(&__huart2,(uint8_t *)&ch,1,HAL_MAX_DELAY);
+ 238              		.loc 1 55 1 view .LVU62
+ 239 0008 0190     		str	r0, [sp, #4]
+ 240              		.loc 1 56 5 view .LVU63
+ 241 000a 0122     		movs	r2, #1
+ 242 000c 01A9     		add	r1, sp, #4
+ 243 000e 0348     		ldr	r0, .L12
+ 244              	.LVL8:
+ 245              		.loc 1 56 5 view .LVU64
+ 246 0010 FFF7FEFF 		bl	HAL_UART_Transmit
+ 247              	.LVL9:
+  57:Src/retarget.c ****     return ch;
+ 248              		.loc 1 57 5 is_stmt 1 view .LVU65
+  58:Src/retarget.c **** }
+ 249              		.loc 1 58 1 is_stmt 0 view .LVU66
+ 250 0014 0198     		ldr	r0, [sp, #4]
+ 251 0016 03B0     		add	sp, sp, #12
+ 252              	.LCFI6:
+ 253              		.cfi_def_cfa_offset 4
+ARM GAS  /tmp/ccY4zrr4.s 			page 7
+
+
+ 254              		@ sp needed
+ 255 0018 5DF804FB 		ldr	pc, [sp], #4
+ 256              	.L13:
+ 257              		.align	2
+ 258              	.L12:
+ 259 001c 00000000 		.word	.LANCHOR0
+ 260              		.cfi_endproc
+ 261              	.LFE135:
+ 263              		.section	.text.__io_getchar,"ax",%progbits
+ 264              		.align	1
+ 265              		.p2align 2,,3
+ 266              		.global	__io_getchar
+ 267              		.syntax unified
+ 268              		.thumb
+ 269              		.thumb_func
+ 270              		.fpu fpv4-sp-d16
+ 272              	__io_getchar:
+ 273              	.LFB136:
+  59:Src/retarget.c **** 
+  60:Src/retarget.c **** int __io_getchar(){
+ 274              		.loc 1 60 19 is_stmt 1 view -0
+ 275              		.cfi_startproc
+ 276              		@ args = 0, pretend = 0, frame = 8
+ 277              		@ frame_needed = 0, uses_anonymous_args = 0
+  61:Src/retarget.c ****     uint8_t ch8;
+ 278              		.loc 1 61 5 view .LVU68
+  62:Src/retarget.c ****     HAL_UART_Receive(&__huart2,&ch8,1,HAL_MAX_DELAY);
+ 279              		.loc 1 62 5 view .LVU69
+  60:Src/retarget.c ****     uint8_t ch8;
+ 280              		.loc 1 60 19 is_stmt 0 view .LVU70
+ 281 0000 00B5     		push	{lr}
+ 282              	.LCFI7:
+ 283              		.cfi_def_cfa_offset 4
+ 284              		.cfi_offset 14, -4
+ 285 0002 83B0     		sub	sp, sp, #12
+ 286              	.LCFI8:
+ 287              		.cfi_def_cfa_offset 16
+ 288              		.loc 1 62 5 view .LVU71
+ 289 0004 4FF0FF33 		mov	r3, #-1
+ 290 0008 0122     		movs	r2, #1
+ 291 000a 0DF10701 		add	r1, sp, #7
+ 292 000e 0448     		ldr	r0, .L16
+ 293 0010 FFF7FEFF 		bl	HAL_UART_Receive
+ 294              	.LVL10:
+  63:Src/retarget.c ****     return ch8;
+ 295              		.loc 1 63 5 is_stmt 1 view .LVU72
+  64:Src/retarget.c **** }
+ 296              		.loc 1 64 1 is_stmt 0 view .LVU73
+ 297 0014 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+ 298 0018 03B0     		add	sp, sp, #12
+ 299              	.LCFI9:
+ 300              		.cfi_def_cfa_offset 4
+ 301              		@ sp needed
+ 302 001a 5DF804FB 		ldr	pc, [sp], #4
+ 303              	.L17:
+ 304 001e 00BF     		.align	2
+ 305              	.L16:
+ARM GAS  /tmp/ccY4zrr4.s 			page 8
+
+
+ 306 0020 00000000 		.word	.LANCHOR0
+ 307              		.cfi_endproc
+ 308              	.LFE136:
+ 310              		.global	__huart2
+ 311              		.section	.bss.__huart2,"aw",%nobits
+ 312              		.align	2
+ 313              		.set	.LANCHOR0,. + 0
+ 316              	__huart2:
+ 317 0000 00000000 		.space	68
+ 317      00000000 
+ 317      00000000 
+ 317      00000000 
+ 317      00000000 
+ 318              		.text
+ 319              	.Letext0:
+ 320              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 321              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+ 322              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h"
+ 323              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 324              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 325              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 326              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ARM GAS  /tmp/ccY4zrr4.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 retarget.c
+     /tmp/ccY4zrr4.s:18     .text.uart_init:0000000000000000 $t
+     /tmp/ccY4zrr4.s:27     .text.uart_init:0000000000000000 uart_init
+     /tmp/ccY4zrr4.s:155    .text.uart_init:000000000000006c $d
+     /tmp/ccY4zrr4.s:163    .text._write:0000000000000000 $t
+     /tmp/ccY4zrr4.s:171    .text._write:0000000000000000 _write
+     /tmp/ccY4zrr4.s:207    .text._write:0000000000000014 $d
+     /tmp/ccY4zrr4.s:212    .text.__io_putchar:0000000000000000 $t
+     /tmp/ccY4zrr4.s:220    .text.__io_putchar:0000000000000000 __io_putchar
+     /tmp/ccY4zrr4.s:259    .text.__io_putchar:000000000000001c $d
+     /tmp/ccY4zrr4.s:264    .text.__io_getchar:0000000000000000 $t
+     /tmp/ccY4zrr4.s:272    .text.__io_getchar:0000000000000000 __io_getchar
+     /tmp/ccY4zrr4.s:306    .text.__io_getchar:0000000000000020 $d
+     /tmp/ccY4zrr4.s:316    .bss.__huart2:0000000000000000 __huart2
+     /tmp/ccY4zrr4.s:312    .bss.__huart2:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_Init
+HAL_UART_Init
+HAL_UART_Transmit
+HAL_UART_Receive
