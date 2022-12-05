@@ -1,8 +1,10 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-#include "bno055/bno055.h"
-#include "bno055/bno_config.h"
+#include "../../bno055.h"
+#include "../../bno_config.h"
+// #include "bno055/bno055.h"
+// #include "bno055/bno_config.h"
 #include "main.h"
 #include "retarget.h"
 #include "stm32f4xx_hal.h"

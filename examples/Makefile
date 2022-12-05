@@ -62,7 +62,8 @@ Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c \
 Src/system_stm32f4xx.c  
 
 C_SOURCES += \
-	Src/bno055/bno055.c \
+	./../bno055.c 
+#   /bno055/bno055.c \
 # 	Src/dp1/ssd1306_fonts.c \
 # 	Src/dp1/dp1.c \
 # 	Src/dp2/dp2.c \
