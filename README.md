@@ -1,11 +1,13 @@
 # Library for Bosch BNO055 IMU Sensor Unit written in and for the STM32 HAL.
 
 ## Installation
-Just throw the `bno055.c`, `bno055.h` and `bno_config.h` into your project, and you are good to go.
+Just throw the `bno055.c`, `bno055.h` and `bno_config.h` into your project, and you are good to go.  
+Or you can use the [`examples`](./examples) Project, which you can just compile with `make`.  
+If you copy over the project, make sure to also copy the library files and change the `mail.c` and `Makefile`. ^^
 
 ## Usage
 You first need to initialize the I2C yourself and enable the clock.  
-There is also an [`examples`](`/examples`) folder where you can find the I2C init code and all the other 
+There is also an [`examples`](./examples) folder where you can find the I2C init code and all the other 
 necessary stuff to understand how to use this libary.  
 
 Simple Init and Gyroscope and Accelerometer Read:
