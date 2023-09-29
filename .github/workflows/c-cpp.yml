@@ -13,13 +13,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: awalsh128/cache-apt-pkgs-action@latest
-      with:
-        packages: make binutils-arm-none-eabi gcc-arm-none-eabi gcc-arm-none-eabi-source libnewlib-arm-none-eabi libstdc++-arm-none-eabi-dev libstdc++-arm-none-eabi-newlib libstdc++-arm-none-eabi-picolibc picolibc-arm-none-eabi
-        version: 1.0
 
-    # - name: Install Prerequisites
-    #   run: sudo apt-get install -y     - name: make
+    - name: Install Prerequisites
+      run: sudo apt-get install -y make binutils-arm-none-eabi gcc-arm-none-eabi gcc-arm-none-eabi-source libnewlib-arm-none-eabi libstdc++-arm-none-eabi-dev libstdc++-arm-none-eabi-newlib libstdc++-arm-none-eabi-picolibc picolibc-arm-none-eabi
+
     - name: make
       working-directory: examples/debug
       run: make
