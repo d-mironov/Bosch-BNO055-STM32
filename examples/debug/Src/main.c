@@ -22,7 +22,7 @@ static void MX_I2C1_Init(void);
 
 static void status_led_write(bool val);
 static void status_led_toggle();
-static void error_led_write(bool val);
+// static void error_led_write(bool val);
 static void error_led_toggle();
 static inline void delay_ms(u32 ms);
 // static void MX_I2C2_Init(void);
