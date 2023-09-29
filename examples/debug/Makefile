@@ -172,9 +172,10 @@ vpath %.c $(sort $(dir $(C_SOURCES)))
 OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(ASM_SOURCES:.s=.o)))
 vpath %.s $(sort $(dir $(ASM_SOURCES)))
 
+
 $(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR) 
 	@$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
-	@printf "[\033[32m+\033[0m] Compiling \033[31m%-120s\033[0m[\033[32mOK\033[0m]\n" $<
+	@printf "%-$(shell expr $(shell tput cols) - 0)b%b\n" "[\033[32m+\033[0m] Compiling \033[31m$<\033[0m" "[\033[32mOK\033[0m]"
 
 $(BUILD_DIR)/%.o: %.s Makefile | $(BUILD_DIR)
 	@$(AS) -c $(CFLAGS) $< -o $@
