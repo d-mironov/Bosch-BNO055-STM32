@@ -1,0 +1,18 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install Prerequisites
+      run: sudo apt-get install -y make binutils-arm-none-eabi gcc-arm-none-eabi gcc-arm-none-eabi-source libnewlib-arm-none-eabi libstdc++-arm-none-eabi-dev libstdc++-arm-none-eabi-newlib libstdc++-arm-none-eabi-picolibc picolibc-arm-none-eabi
+    - name: make
+      run: make
